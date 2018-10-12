@@ -1,0 +1,26 @@
+<%# app/views/students/_list.html.erb %>
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info students %>
+  </div>
+
+  <table>
+    <tr>
+      <th><%= filterrific_sorting_link(@filterrific, :name) %></th>
+      <th><%= filterrific_sorting_link(@filterrific, :email) %></th>
+      <th><%= filterrific_sorting_link(@filterrific, :country) %></th>
+      <th><%= filterrific_sorting_link(@filterrific, :registered_at) %></th>
+    </tr>
+    <% students.each do |student| %>
+      <tr>
+        <td><%= link_to student.full_name, '#' %></td>
+        <td><%= student.email %></td>
+        <td><%= student.country_name %></td>
+        <td><%= student.decorated_created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate students %>
